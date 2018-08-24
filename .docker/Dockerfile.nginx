@@ -1,0 +1,6 @@
+ARG CODE_IMAGE
+FROM ${CODE_IMAGE} as code
+
+FROM govcmsdev/nginx-drupal
+
+COPY --from=code /app /app

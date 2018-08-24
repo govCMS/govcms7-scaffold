@@ -1,0 +1,9 @@
+FROM govcmsdev/test
+
+COPY themes/ /app/profiles/govcms/themes/custom
+
+RUN rm -Rf /app/tests/behat/features/*
+COPY tests/behat/features/ /app/tests/behat/features
+
+RUN rm -Rf /app/tests/phpunit/*
+COPY tests/phpunit/tests/ /app/tests/phpunit/tests

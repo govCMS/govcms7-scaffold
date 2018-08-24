@@ -1,0 +1,125 @@
+version: '2.3'
+
+x-lagoon-project:
+  &lagoon-project govcms-sass
+
+x-volumes:
+  &default-volumes
+    volumes:
+      - ./themes:/app/profiles/govcms/themes/custom:${VOLUME_FLAGS:-delegated}
+      - ./files:/app/sites/default/files:delegated
+      - ./tests/behat/features:/app/tests/behat/features:${VOLUME_FLAGS:-delegated}
+      - ./tests/phpunit/tests:/app/tests/phpunit/tests:${VOLUME_FLAGS:-delegated}
+
+x-environment:
+  &default-environment
+    LAGOON_PROJECT: *lagoon-project
+    LAGOON_ROUTE: http://govcms-sass.docker.amazee.io
+
+services:
+
+  code:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.code
+    image: *lagoon-project
+    labels:
+      lagoon.type: cli-persistent
+      lagoon.persistent.name: nginx
+      lagoon.persistent: /app/sites/default/files/
+    << : *default-volumes
+    volumes_from:
+      - container:amazeeio-ssh-agent
+    environment:
+      << : *default-environment
+
+  test:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.test
+    image: *lagoon-project
+    labels:
+      lagoon.type: cli-persistent
+      lagoon.persistent.name: nginx
+      lagoon.persistent: /app/sites/default/files/
+    << : *default-volumes
+    depends_on:
+      - code
+    volumes_from:
+      - container:amazeeio-ssh-agent
+    environment:
+      << : *default-environment
+
+  nginx:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.nginx
+      args:
+        CODE_IMAGE: *lagoon-project
+    labels:
+      lagoon.type: nginx-php-persistent
+      lagoon.persistent: /app/sites/default/files/
+    << : *default-volumes
+    depends_on:
+      - code
+    environment:
+      << : *default-environment
+      LAGOON_LOCALDEV_URL: govcms-sass.docker.amazee.io
+    networks:
+      - amazeeio-network
+      - default
+
+  php:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.php
+      args:
+        CODE_IMAGE: *lagoon-project
+    labels:
+      lagoon.type: nginx-php-persistent
+      lagoon.name: nginx
+      lagoon.persistent: /app/sites/default/files/
+    << : *default-volumes
+    depends_on:
+      - code
+    environment:
+      << : *default-environment
+
+  mariadb:
+    image: govcmsdev/mariadb-drupal
+    labels:
+      lagoon.type: mariadb
+    ports:
+      - "3306" # Find port on host with `docker-compose port mariadb 3306`
+    environment:
+      << : *default-environment
+
+  varnish:
+    image: govcmsdev/varnish-drupal
+    labels:
+      lagoon.type: varnish
+    environment:
+      << : *default-environment
+    networks:
+      - amazeeio-network
+      - default
+
+  redis:
+    image: govcmsdev/redis
+    labels:
+      lagoon.type: redis
+    environment:
+      << : *default-environment
+
+  chrome:
+    image: selenium/standalone-chrome
+    shm_size: '1gb'
+    depends_on:
+      - test
+    labels:
+      lagoon.type: none
+    << : *default-volumes
+
+networks:
+  amazeeio-network:
+    external: true

@@ -1,0 +1,3 @@
+FROM govcmsdev/govcms7
+
+COPY themes/ /app/profiles/govcms/themes/custom
