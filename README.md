@@ -11,36 +11,26 @@
 
 ## Setup
 
-1. Checkout project repo and confirm the path is in docker's file sharing config - https://docs.docker.com/docker-for-mac/#file-sharing
+1. Checkout project repo and confirm the path is in Docker's file sharing config (https://docs.docker.com/docker-for-mac/#file-sharing):
 
-```
-git clone https://projects.govcms.gov.au/dof/agency.git govcms-agency && cd $_
-```
+        git clone https://projects.govcms.gov.au/dof/agency.git govcms-agency && cd $_
+  
+2. Make sure you don't have anything running on port 80 on the host machine (like a web server):
 
-2. Make sure you don't have anything running on port 80 on the host machine (like a web server).
+        pygmy up
 
-```
-pygmy up
-```
+3. Build and start the containers:
 
-3. Build and start the containers
+        ahoy up
 
-```
-ahoy up
-```
+4. Install GovCMS:
 
-4. Install GovCMS.
+        ahoy install
 
-```
-ahoy install
-```
+5. Login to Drupal:
 
-5. Login
-
-```
-ahoy login
-```
+        ahoy login
 
 ## Commands
 
-Additional commands are listed in `.ahoy.yml`
+Additional commands are listed in `.ahoy.yml`.
