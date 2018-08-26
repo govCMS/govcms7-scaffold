@@ -60,7 +60,7 @@ commands:
 
   test-phpunit:
     usage: Run PHPUnit tests.
-    cmd: docker-compose exec test test-phpunit-theme "$@"
+    cmd: docker-compose exec test phpunit "$@"
 
   pull:
     usage: Pull latest docker images.
