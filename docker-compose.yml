@@ -1,7 +1,13 @@
 version: '2.3'
 
 x-lagoon-project:
-  &lagoon-project govcms-sass
+  &lagoon-project govcms-saas
+
+x-lagoon-route:
+  &lagoon-route http://govcms-saas.docker.amazee.io
+
+x-lagoon-local-dev-url:
+  &lagoon-local-dev-url govcms-saas.docker.amazee.io
 
 x-volumes:
   &default-volumes
@@ -14,7 +20,7 @@ x-volumes:
 x-environment:
   &default-environment
     LAGOON_PROJECT: *lagoon-project
-    LAGOON_ROUTE: http://govcms-sass.docker.amazee.io
+    LAGOON_ROUTE: *lagoon-route
 
 services:
 
@@ -61,7 +67,7 @@ services:
       - cli
     environment:
       << : *default-environment
-      LAGOON_LOCALDEV_URL: govcms-sass.docker.amazee.io
+      LAGOON_LOCALDEV_URL: *lagoon-local-dev-url
     networks:
       - amazeeio-network
       - default
