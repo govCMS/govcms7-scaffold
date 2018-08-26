@@ -18,7 +18,7 @@ x-environment:
 
 services:
 
-  code:
+  cli:
     build:
       context: .
       dockerfile: .docker/Dockerfile.code
@@ -39,12 +39,10 @@ services:
       dockerfile: .docker/Dockerfile.test
     image: *lagoon-project
     labels:
-      lagoon.type: cli-persistent
-      lagoon.persistent.name: nginx
-      lagoon.persistent: /app/sites/default/files/
+      lagoon.type: none
     << : *default-volumes
     depends_on:
-      - code
+      - cli
     volumes_from:
       - container:amazeeio-ssh-agent
     environment:
@@ -61,7 +59,7 @@ services:
       lagoon.persistent: /app/sites/default/files/
     << : *default-volumes
     depends_on:
-      - code
+      - cli
     environment:
       << : *default-environment
       LAGOON_LOCALDEV_URL: govcms-sass.docker.amazee.io
@@ -81,7 +79,7 @@ services:
       lagoon.persistent: /app/sites/default/files/
     << : *default-volumes
     depends_on:
-      - code
+      - cli
     environment:
       << : *default-environment
 
