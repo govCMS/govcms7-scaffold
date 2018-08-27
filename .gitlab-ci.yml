@@ -34,7 +34,7 @@ build:
   - echo "VOLUME_FLAGS=cached">.env
   - ahoy up
   - docker-compose exec -T test dockerize -wait tcp://mariadb:3306 -timeout 1m
-  - docker-compose exec -T test bash -c "drush si -y govcms -- install_configure_form.update_status_module='array(FALSE,FALSE)"
+  - docker-compose exec -T test bash -c "drush si -y govcms -- install_configure_form.update_status_module='array(FALSE,FALSE)'"
 #  - ahoy install
 
 #test:lint:
