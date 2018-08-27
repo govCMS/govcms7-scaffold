@@ -6,7 +6,6 @@ services:
 build:
   script:
   - export DOCKER_HOST=tcp://localhost:2375
-  - ahoy pull
   # @todo: Remove this.
   - docker network prune -f && docker network create amazeeio-network
   - echo "VOLUME_FLAGS=cached">.env
