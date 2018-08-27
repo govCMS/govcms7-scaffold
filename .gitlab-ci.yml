@@ -28,6 +28,7 @@ build:
   dependencies:
     - pull
   script:
+  - printenv
   - echo "Building environment"
   - docker info
   - docker network prune -f && docker network create amazeeio-network
