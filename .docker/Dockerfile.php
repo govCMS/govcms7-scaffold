@@ -1,5 +1,5 @@
-ARG CODE_IMAGE
-FROM ${CODE_IMAGE} as code
+ARG CLI_IMAGE
+FROM ${CLI_IMAGE} as code
 
 FROM govcmsdev/php
 

@@ -58,7 +58,7 @@ services:
       context: .
       dockerfile: .docker/Dockerfile.nginx
       args:
-        CODE_IMAGE: *lagoon-project
+        CLI_IMAGE: *lagoon-project
     labels:
       lagoon.type: nginx-php-persistent
       lagoon.persistent: /app/sites/default/files/
@@ -77,7 +77,7 @@ services:
       context: .
       dockerfile: .docker/Dockerfile.php
       args:
-        CODE_IMAGE: *lagoon-project
+        CLI_IMAGE: *lagoon-project
     labels:
       lagoon.type: nginx-php-persistent
       lagoon.name: nginx
