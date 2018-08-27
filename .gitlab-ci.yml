@@ -6,10 +6,7 @@ services:
 build:
   script:
   - export DOCKER_HOST=tcp://localhost:2375
-  # @todo: Remove this.
-  - docker network prune -f && docker network create amazeeio-network
   - docker run --name amazeeio-ssh-agent -d amazeeio/ssh-agent
-  - echo "VOLUME_FLAGS=cached">.env
   - ahoy up
   - docker-compose exec -T test dockerize -wait tcp://mariadb:3306 -timeout 1m
   - ahoy -v install -- install_configure_form.update_status_module='array(FALSE,FALSE)'
