@@ -1,6 +1,6 @@
 ARG CLI_IMAGE
-FROM ${CLI_IMAGE} as code
+FROM ${CLI_IMAGE} as cli
 
 FROM govcmsdev/php
 
-COPY --from=code /app /app
+COPY --from=cli /app /app
