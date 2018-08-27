@@ -5,7 +5,7 @@ services:
 
 stages:
   - pull
-#  - build
+  - build
 #  - test
 #  - deploy
 
@@ -14,14 +14,16 @@ pull:
   script:
   - echo "Pulling latest GovCMS images"
   - export DOCKER_HOST=tcp://localhost:2375
+  - ahoy pull
+
+build:
+  stage: build
+  script:
+  - echo "Building environment"
   - docker info
-#
-#build:
-#  stage: build
-#  script:
-#  - echo "Building environment"
-#  - sleep 5
-#
+  - ahoy up
+  - ahoy install
+
 #test:lint:
 #  stage: test
 #  script:
