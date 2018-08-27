@@ -30,6 +30,7 @@ build:
   - echo "Building environment"
   - docker info
   - docker network prune -f && docker network create amazeeio-network
+  - echo "VOLUME_FLAGS=cached">.env
   - ahoy up
   - ahoy install
 
