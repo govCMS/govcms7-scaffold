@@ -3,12 +3,9 @@ image: integratedexperts/circleci2-builder
 services:
   - docker:dind
 
-variables:
-  DOCKER_HOST: tcp://localhost:2375
-  COMPOSE_INTERACTIVE_NO_CLI: 1
-
 build:
   script:
+  - export DOCKER_HOST=tcp://localhost:2375
   - ahoy pull
   # @todo: Remove this.
   - docker network prune -f && docker network create amazeeio-network
