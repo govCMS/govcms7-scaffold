@@ -1,47 +1,51 @@
 image: integratedexperts/circleci2-builder
 
+services:
+  - docker:dind
+
 stages:
   - pull
-  - build
-  - test
-  - deploy
+#  - build
+#  - test
+#  - deploy
 
 pull:
   stage: pull
   script:
   - echo "Pulling latest GovCMS images"
-  - sleep 5
-
-build:
-  stage: build
-  script:
-  - echo "Building environment"
-  - sleep 5
-
-test:lint:
-  stage: test
-  script:
-  - echo "Linting code"
-  - sleep 5
-  allow_failure: true
-
-test:phpunit:
-  stage: test
-  script:
-  - echo "Running PHPUnit tests"
-  - sleep 5
-
-test:behat:
-  stage: test
-  script:
-  - echo "Running Behat tests"
-  - sleep 5
-
-deploy:
-  stage: deploy
-  script:
-  - echo "Deploying project to Lagoon"
-  - echo "curl -X POST -d projectName=$CI_PROJECT_NAME -d branchName=$CI_COMMIT_REF_NAME http://rest2tasks-lagoon.govcms.amazee.io/deploy"
-  - curl -X POST -d projectName=$CI_PROJECT_NAME -d branchName=$CI_COMMIT_REF_NAME http://rest2tasks-lagoon.govcms.amazee.io/deploy
-#  only:
-#    - master
+  - export DOCKER_HOST=tcp://localhost:2375
+  - docker info
+#
+#build:
+#  stage: build
+#  script:
+#  - echo "Building environment"
+#  - sleep 5
+#
+#test:lint:
+#  stage: test
+#  script:
+#  - echo "Linting code"
+#  - sleep 5
+#  allow_failure: true
+#
+#test:phpunit:
+#  stage: test
+#  script:
+#  - echo "Running PHPUnit tests"
+#  - sleep 5
+#
+#test:behat:
+#  stage: test
+#  script:
+#  - echo "Running Behat tests"
+#  - sleep 5
+#
+#deploy:
+#  stage: deploy
+#  script:
+#  - echo "Deploying project to Lagoon"
+#  - echo "curl -X POST -d projectName=$CI_PROJECT_NAME -d branchName=$CI_COMMIT_REF_NAME http://rest2tasks-lagoon.govcms.amazee.io/deploy"
+#  - curl -X POST -d projectName=$CI_PROJECT_NAME -d branchName=$CI_COMMIT_REF_NAME http://rest2tasks-lagoon.govcms.amazee.io/deploy
+##  only:
+##    - master
