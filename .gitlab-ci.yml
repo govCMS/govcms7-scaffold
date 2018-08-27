@@ -13,8 +13,6 @@ stages:
 
 build:
   stage: build
-  dependencies:
-    - pull
   script:
   - ahoy pull
   # @todo: Remove this.
