@@ -3,6 +3,9 @@ image: integratedexperts/circleci2-builder
 services:
   - docker:dind
 
+variables:
+  DOCKER_HOST: tcp://localhost:2375
+
 stages:
   - pull
   - build
@@ -11,13 +14,18 @@ stages:
 
 pull:
   stage: pull
+  artifacts:
+    untracked: true
   script:
   - echo "Pulling latest GovCMS images"
-  - export DOCKER_HOST=tcp://localhost:2375
+#  - export DOCKER_HOST=
+  - docker info
   - ahoy pull
 
 build:
   stage: build
+  dependencies:
+    - pull
   script:
   - echo "Building environment"
   - docker info
