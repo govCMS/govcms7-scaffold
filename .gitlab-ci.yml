@@ -32,7 +32,8 @@ build:
   - docker network prune -f && docker network create amazeeio-network
   - echo "VOLUME_FLAGS=cached">.env
   - ahoy up
-  - ahoy install
+  - docker-compose exec test drush si -y govcms
+#  - ahoy install
 
 #test:lint:
 #  stage: test
