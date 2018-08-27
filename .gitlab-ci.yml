@@ -8,29 +8,16 @@ variables:
   COMPOSE_INTERACTIVE_NO_CLI: 1
 
 stages:
-  - pull
   - build
-#  - test
-#  - deploy
-
-pull:
-  stage: pull
-  artifacts:
-    untracked: true
-  script:
-  - echo "Pulling latest GovCMS images"
-#  - export DOCKER_HOST=
-  - docker info
-  - ahoy pull
 
 build:
   stage: build
   dependencies:
     - pull
   script:
-  - printenv
-  - echo "Building environment"
   - docker info
+  - ahoy pull
+  # @todo: Remove this.
   - docker network prune -f && docker network create amazeeio-network
   - echo "VOLUME_FLAGS=cached">.env
   - ahoy up
@@ -43,32 +30,3 @@ build:
     paths:
     - tests/behat/features/screenshots
     expire_in: 1 hour
-#  - ahoy install
-
-#test:lint:
-#  stage: test
-#  script:
-#  - echo "Linting code"
-#  - sleep 5
-#  allow_failure: true
-#
-#test:phpunit:
-#  stage: test
-#  script:
-#  - echo "Running PHPUnit tests"
-#  - sleep 5
-#
-#test:behat:
-#  stage: test
-#  script:
-#  - echo "Running Behat tests"
-#  - sleep 5
-#
-#deploy:
-#  stage: deploy
-#  script:
-#  - echo "Deploying project to Lagoon"
-#  - echo "curl -X POST -d projectName=$CI_PROJECT_NAME -d branchName=$CI_COMMIT_REF_NAME http://rest2tasks-lagoon.govcms.amazee.io/deploy"
-#  - curl -X POST -d projectName=$CI_PROJECT_NAME -d branchName=$CI_COMMIT_REF_NAME http://rest2tasks-lagoon.govcms.amazee.io/deploy
-##  only:
-##    - master
