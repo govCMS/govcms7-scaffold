@@ -16,15 +16,15 @@ commands:
 
   cli:
     usage: Start a shell inside TEST container.
-    cmd: docker-compose exec test bash
+    cmd: docker-compose exec -T test bash
 
   run:
     usage: Run command inside TEST container.
-    cmd: docker-compose exec test bash -c "$@"
+    cmd: docker-compose exec -T test bash -c "$@"
 
   drush:
     usage: Run drush commands in TEST container.
-    cmd: docker-compose exec test drush "$@"
+    cmd: docker-compose exec -T test drush "$@"
 
   logs:
     usage: Show Docker logs.
@@ -44,23 +44,23 @@ commands:
 
   install:
     usage: Install the profile.
-    cmd: docker-compose exec test drush si -y govcms "$@"
+    cmd: docker-compose exec -T test drush si -y govcms "$@"
 
   login:
     usage: Login to a website.
-    cmd: docker-compose exec test drush uli "$@"
+    cmd: docker-compose exec -T test drush uli "$@"
 
   lint:
     usage: Lint code
-    cmd: docker-compose exec test lint-theme
+    cmd: docker-compose exec -T test lint-theme
 
   test-behat:
     usage: Run Behat tests.
-    cmd: docker-compose exec test behat "$@"
+    cmd: docker-compose exec -T test behat "$@"
 
   test-phpunit:
     usage: Run PHPUnit tests.
-    cmd: docker-compose exec test phpunit "$@"
+    cmd: docker-compose exec -T test phpunit "$@"
 
   pull:
     usage: Pull latest docker images.
