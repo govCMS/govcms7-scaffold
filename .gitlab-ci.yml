@@ -7,12 +7,7 @@ variables:
   DOCKER_HOST: tcp://localhost:2375
   COMPOSE_INTERACTIVE_NO_CLI: 1
 
-# @todo: Remove stages
-stages:
-  - build
-
 build:
-  stage: build
   script:
   - ahoy pull
   # @todo: Remove this.
