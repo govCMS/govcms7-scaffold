@@ -29,6 +29,7 @@ build:
   script:
   - echo "Building environment"
   - docker info
+  - docker network prune -f && docker network create amazeeio-network
   - ahoy up
   - ahoy install
 
