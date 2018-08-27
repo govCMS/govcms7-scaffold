@@ -7,6 +7,7 @@ variables:
   DOCKER_HOST: tcp://localhost:2375
   COMPOSE_INTERACTIVE_NO_CLI: 1
 
+# @todo: Remove stages
 stages:
   - build
 
@@ -15,17 +16,16 @@ build:
   dependencies:
     - pull
   script:
-  - docker info
   - ahoy pull
   # @todo: Remove this.
   - docker network prune -f && docker network create amazeeio-network
   - echo "VOLUME_FLAGS=cached">.env
   - ahoy up
   - docker-compose exec -T test dockerize -wait tcp://mariadb:3306 -timeout 1m
-  - docker-compose exec -T test bash -c "drush si -y govcms install_configure_form.update_status_module='array(FALSE,FALSE)'"
-  - docker-compose exec -T test lint-theme
-  - docker-compose exec -T test behat
-  - docker-compose exec -T test phpunit
+  - ahoy -v install -- install_configure_form.update_status_module='array(FALSE,FALSE)'
+  - ahoy lint
+  - ahoy test-phpunit
+  - ahoy test-behat
   artifacts:
     paths:
     - tests/behat/features/screenshots
