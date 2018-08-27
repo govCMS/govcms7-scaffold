@@ -39,6 +39,10 @@ build:
   - docker-compose exec -T test lint-theme
   - docker-compose exec -T test behat
   - docker-compose exec -T test phpunit
+  artifacts:
+    paths:
+    - tests/behat/features/screenshots
+    expire_in: 1 hour
 #  - ahoy install
 
 #test:lint:
