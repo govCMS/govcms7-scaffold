@@ -1,4 +1,4 @@
-FROM govcmsdev/test
+FROM govcmsdev/test-saas
 
 COPY themes/ /app/profiles/govcms/themes/custom
 
