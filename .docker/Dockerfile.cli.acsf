@@ -1,0 +1,3 @@
+FROM govcmsdev/govcms7-saas-acsf
+
+COPY themes/ /app/profiles/govcms/themes/custom
