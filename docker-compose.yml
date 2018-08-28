@@ -7,7 +7,7 @@ x-lagoon-route:
   &lagoon-route http://govcms-saas.docker.amazee.io
 
 x-lagoon-local-dev-url:
-  &lagoon-local-dev-url govcms-saas.docker.amazee.io
+  &lagoon-local-dev-url nginx-govcms-saas.docker.amazee.io
 
 x-volumes:
   &default-volumes
