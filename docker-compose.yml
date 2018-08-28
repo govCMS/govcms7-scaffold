@@ -3,11 +3,8 @@ version: '2.3'
 x-lagoon-project:
   &lagoon-project govcms-saas
 
-x-lagoon-route:
-  &lagoon-route http://govcms-saas.docker.amazee.io
-
 x-lagoon-local-dev-url:
-  &lagoon-local-dev-url nginx-govcms-saas.docker.amazee.io
+  &lagoon-local-dev-url http://govcms-saas.docker.amazee.io
 
 x-volumes:
   &default-volumes
@@ -20,7 +17,6 @@ x-volumes:
 x-environment:
   &default-environment
     LAGOON_PROJECT: *lagoon-project
-    LAGOON_ROUTE: *lagoon-route
 
 services:
 
@@ -114,16 +110,6 @@ services:
       - "3306" # Find port on host with `docker-compose port mariadb 3306`
     environment:
       << : *default-environment
-
-  varnish:
-    image: govcmsdev/varnish-drupal-saas
-    labels:
-      lagoon.type: varnish
-    environment:
-      << : *default-environment
-    networks:
-      - amazeeio-network
-      - default
 
   redis:
     image: govcmsdev/redis-saas
