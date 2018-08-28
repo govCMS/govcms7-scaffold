@@ -1,6 +1,6 @@
 # GovCMS SaaS project
 
-[![pipeline status](https://projects.govcms.gov.au/GovCMS/sass-scaffold/badges/master/pipeline.svg)](https://projects.govcms.gov.au/GovCMS/sass-scaffold/commits/master)
+[![pipeline status](https://projects.govcms.gov.au/GovCMS/saas-scaffold/badges/master/pipeline.svg)](https://projects.govcms.gov.au/GovCMS/saas-scaffold/commits/master)
 
 ## Requirements
 

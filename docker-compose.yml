@@ -27,7 +27,7 @@ services:
   cli:
     build:
       context: .
-      dockerfile: .docker/Dockerfile.code
+      dockerfile: .docker/Dockerfile.cli
     image: *lagoon-project
     labels:
       lagoon.type: cli-persistent
@@ -56,6 +56,7 @@ services:
   nginx:
     build:
       context: .
+      dockerfile: .docker/Dockerfile.nginx
       dockerfile: .docker/Dockerfile.nginx
       args:
         CLI_IMAGE: *lagoon-project
@@ -89,7 +90,7 @@ services:
       << : *default-environment
 
   mariadb:
-    image: govcmsdev/mariadb-drupal
+    image: govcmsdev/mariadb-drupal-saas
     labels:
       lagoon.type: mariadb
     ports:
@@ -98,7 +99,7 @@ services:
       << : *default-environment
 
   varnish:
-    image: govcmsdev/varnish-drupal
+    image: govcmsdev/varnish-drupal-saas
     labels:
       lagoon.type: varnish
     environment:
@@ -108,9 +109,16 @@ services:
       - default
 
   redis:
-    image: govcmsdev/redis
+    image: govcmsdev/redis-saas
     labels:
       lagoon.type: redis
+    environment:
+      << : *default-environment
+
+  solr:
+    image: govcmsdev/solr-saas
+    ports:
+      - "8983" # Find port on host with `docker-compose port solr 8983`
     environment:
       << : *default-environment
 
