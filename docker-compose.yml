@@ -120,6 +120,8 @@ services:
 
   solr:
     image: govcmsdev/solr-saas
+    labels:
+      lagoon.type: solr
     ports:
       - "8983" # Find port on host with `docker-compose port solr 8983`
     environment:
