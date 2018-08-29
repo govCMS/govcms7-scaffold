@@ -40,7 +40,6 @@ services:
     build:
       context: .
       dockerfile: .docker/Dockerfile.cli.acsf
-    image: *lagoon-project
     labels:
       lagoon.type: cli-persistent
       lagoon.persistent.name: nginx
@@ -69,8 +68,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: .docker/Dockerfile.nginx
-      dockerfile: .docker/Dockerfile.nginx
+      dockerfile: .docker/Dockerfile.nginx-drupal
       args:
         CLI_IMAGE: *lagoon-project
     labels:
@@ -103,7 +101,7 @@ services:
       << : *default-environment
 
   mariadb:
-    image: govcmsdev/mariadb-drupal-saas
+    image: govcmslagoon/mariadb-drupal
     labels:
       lagoon.type: mariadb
     ports:
@@ -112,14 +110,14 @@ services:
       << : *default-environment
 
   redis:
-    image: govcmsdev/redis-saas
+    image: govcmslagoon/redis
     labels:
       lagoon.type: redis
     environment:
       << : *default-environment
 
   solr:
-    image: govcmsdev/solr-saas
+    image: govcmslagoon/solr
     labels:
       lagoon.type: solr
     ports:
