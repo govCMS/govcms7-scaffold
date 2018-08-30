@@ -17,6 +17,7 @@ x-volumes:
 x-environment:
   &default-environment
     LAGOON_PROJECT: *lagoon-project
+    LAGOON_ROUTE: &default-url ${LOCALDEV_URL:-http://govcms.docker.amazee.io}
 
 services:
 
@@ -79,7 +80,7 @@ services:
       - cli
     environment:
       << : *default-environment
-      LAGOON_LOCALDEV_URL: *lagoon-local-dev-url
+      LAGOON_LOCALDEV_URL: *default-url
     networks:
       - amazeeio-network
       - default
