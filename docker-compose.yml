@@ -31,8 +31,6 @@ services:
       lagoon.persistent.name: nginx
       lagoon.persistent: /app/sites/default/files/
     << : *default-volumes
-    volumes_from:
-      - container:amazeeio-ssh-agent
     environment:
       << : *default-environment
 
@@ -46,8 +44,6 @@ services:
       lagoon.persistent.name: nginx
       lagoon.persistent: /app/sites/default/files/
     << : *default-volumes
-    volumes_from:
-      - container:amazeeio-ssh-agent
     environment:
       << : *default-environment
   # [/META:ACSF]
@@ -61,8 +57,6 @@ services:
     << : *default-volumes
     depends_on:
       - cli
-    volumes_from:
-      - container:amazeeio-ssh-agent
     environment:
       << : *default-environment
 
