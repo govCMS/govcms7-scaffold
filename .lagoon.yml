@@ -1,1 +1,8 @@
 docker-compose-yaml: docker-compose.yml
+
+tasks:
+  post-rollout:
+    - run:
+        name: clear cache
+        command: drush cc all
+        service: cli
