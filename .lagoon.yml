@@ -3,12 +3,8 @@ docker-compose-yaml: docker-compose.yml
 tasks:
   post-rollout:
     - run:
-        name: Database updates
-        command: drush updb -y
-        service: cli
-    - run:
-        name: Clear caches
-        command: drush cc all
+        name: Deploy GovCMS
+        command: govcms-deploy
         service: cli
 
 environments:
