@@ -1,6 +1,11 @@
 docker-compose-yaml: docker-compose.yml
 
 tasks:
+  pre-rollout:
+    - run:
+        name: drush sql-dump
+        command: mkdir -p /app/sites/default/files/private/ && drush sql-dump --ordered-dump --gzip --result-file=/app/sites/default/files/private/pre-deploy-dump.sql
+        service: cli
   post-rollout:
     - run:
         name: Deploy GovCMS
