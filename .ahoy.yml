@@ -2,16 +2,6 @@
 ahoyapi: v2
 
 commands:
-  confirm:
-    cmd: |
-      read -r -p "$@ [y/N] " response
-      if [ $response = y ]
-      then
-        true
-      else
-        false
-      fi
-
   up:
     usage: Build project.
     cmd: docker-compose up -d "$@"
@@ -84,3 +74,14 @@ commands:
   audit-site:
     usage: Run site audit
     cmd: docker-compose exec -T test drutiny profile:run ci @self "$@"
+
+  confirm:
+    cmd: |
+      read -r -p "$@ [y/N] " response
+      if [ $response = y ]
+      then
+        true
+      else
+        false
+      fi
+    hide: true
