@@ -98,7 +98,7 @@ services:
   mariadb:
     image: ${MARIADB_DATA_IMAGE:-govcmslagoon/mariadb-drupal}
     labels:
-      lagoon.type: mariadb-shared
+      lagoon.type: mariadb
       lagoon.image: govcmslagoon/mariadb-drupal
     ports:
       - "3306" # Find port on host with `docker-compose port mariadb 3306`
