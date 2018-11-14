@@ -2,7 +2,6 @@
 
 ## Known Issues
 
-* Currently (Nov 2018), all local projects utilise the same LOCALDEV_URL - we are working to fix that.
 * This repository is still a Work-in-Progress, and may be subject to slight alterations
 * This process only applies to the [7.x-3.x](https://github.com/govCMS/govcms/tree/7.x-3.x) branch of GovCMS
 
