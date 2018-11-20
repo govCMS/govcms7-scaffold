@@ -82,7 +82,7 @@ commands:
   confirm:
     cmd: |
       read -r -p "$@ [y/N] " response
-      if [ $response = y ]
+      if [[ $response = y ]]
       then
         true
       else
