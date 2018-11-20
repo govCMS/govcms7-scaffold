@@ -1,15 +1,15 @@
 version: '2.3'
 
 x-lagoon-project:
-  &lagoon-project govcms-saas
+  &lagoon-project govcms7-scaffold
 
 x-lagoon-local-dev-url:
-  &lagoon-local-dev-url http://govcms-saas.docker.amazee.io
+  &lagoon-local-dev-url http://govcms7-scaffold.docker.amazee.io
 
 x-volumes:
   &default-volumes
     volumes:
-      - ./themes:/app/profiles/govcms/themes/custom:${VOLUME_FLAGS:-delegated}
+      - ./themes:/app/sites/default/themes/custom:${VOLUME_FLAGS:-delegated}
       - ./files:/app/sites/default/files:delegated
       - ./tests/behat/features:/app/tests/behat/features:${VOLUME_FLAGS:-delegated}
       - ./tests/phpunit/tests:/app/tests/phpunit/tests:${VOLUME_FLAGS:-delegated}
@@ -19,7 +19,7 @@ x-environment:
     STAGE_FILE_PROXY_URL: ${STAGE_FILE_PROXY_URL:-}
     LAGOON_ENVIRONMENT_TYPE: ${LAGOON_ENVIRONMENT_TYPE}
     LAGOON_PROJECT: *lagoon-project
-    LAGOON_ROUTE: &default-url ${LOCALDEV_URL:-http://govcms.docker.amazee.io}
+    LAGOON_ROUTE: &default-url ${LOCALDEV_URL:-http://govcms7-scaffold.docker.amazee.io}
 
 services:
 
