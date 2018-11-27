@@ -52,7 +52,7 @@ Additional commands are listed in `.ahoy.yml`, or available from the command lin
 The GovCMS projects have been designed to be able to import a nightly copy of the latest `master` branch database in two ways:
 
 1: Using the GitLab container registry nightly backup
-As per the instructions in https://projects.govcms.gov.au/{org}/{project}/container_registry
+* these instructions are for https://projects.govcms.gov.au/{org}/{project}/container_registry
 * add a GitLab Personal Access Token with `read_registry` scope (profile/personal_access_tokens)
 * `docker login gitlab-registry-production.govcms.amazee.io` (and use the PAT created above as the password)
 * `ahoy up` (or the docker-compose equivalent)
@@ -73,7 +73,7 @@ As per the instructions in https://projects.govcms.gov.au/{org}/{project}/contai
 
 ## Image inheritance
 
-This project is designed to provision a Drupal 8 project onto GovCMS SaaS, using the GovCMS8 distribution, and has been prepared thus
+This project is designed to provision a Drupal 7 project onto GovCMS SaaS, using the GovCMS distribution, and has been prepared thus
 
 1. The vanilla GovCMS (7.x-3.x) Distribution is available at [Github Source](https://github.com/govcms/govcms) and as [Public DockerHub images](https://hub.docker.com/r/govcms)
 2. Those GovCMS images are then customised for Lagoon and GovCMS, and are available at [Github Source](https://github.com/govcms/govcmslagoon) and as [Public DockerHub images](https://hub.docker.com/r/govcmslagoon)
