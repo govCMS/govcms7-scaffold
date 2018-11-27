@@ -53,16 +53,16 @@ The GovCMS projects have been designed to be able to import a nightly copy of th
 
 1: Using the GitLab container registry nightly backup
 As per the instructions in https://projects.govcms.gov.au/{org}/{project}/container_registry
-a. add a GitLab Personal Access Token with `read_registry` scope (profile/personal_access_tokens)
-b. `docker login gitlab-registry-production.govcms.amazee.io` (and use the PAT created above as the password)
-c. `ahoy up` (or the docker-compose equivalent)
-d. to refresh the db with a newer version, run `ahoy up` again
+* add a GitLab Personal Access Token with `read_registry` scope (profile/personal_access_tokens)
+* `docker login gitlab-registry-production.govcms.amazee.io` (and use the PAT created above as the password)
+* `ahoy up` (or the docker-compose equivalent)
+* to refresh the db with a newer version, run `ahoy up` again
 
 2: Use the backups accessible via the UI
-a. Head to https://ui-lagoon.govcms.amazee.io/backups?name={project}-master
-b. Click "Prepare download" for the most recent mysql backup you want - note that you will have to refresh the page to see when it is complete
-c. Download that backup into your project folder
-d. `ahoy mysql-import` to import the dump you just saved
+* head to https://ui-lagoon.govcms.amazee.io/backups?name={project}-master
+* click "Prepare download" for the most recent mysql backup you want - note that you will have to refresh the page to see when it is complete
+* download that backup into your project folder
+* `ahoy mysql-import` to import the dump you just saved
 
 ## Development
 
