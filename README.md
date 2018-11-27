@@ -47,6 +47,23 @@
 
 Additional commands are listed in `.ahoy.yml`, or available from the command line `ahoy -v`
 
+## Databases
+
+The GovCMS projects have been designed to be able to import a nightly copy of the latest `master` branch database in two ways:
+
+1: Using the GitLab container registry nightly backup
+As per the instructions in https://projects.govcms.gov.au/{org}/{project}/container_registry
+a. add a GitLab Personal Access Token with `read_registry` scope (profile/personal_access_tokens)
+b. `docker login gitlab-registry-production.govcms.amazee.io` (and use the PAT created above as the password)
+c. `ahoy up` (or the docker-compose equivalent)
+d. to refresh the db with a newer version, run `ahoy up` again
+
+2: Use the backups accessible via the UI
+a. Head to https://ui-lagoon.govcms.amazee.io/backups?name={project}-master
+b. Click "Prepare download" for the most recent mysql backup you want - note that you will have to refresh the page to see when it is complete
+c. Download that backup into your project folder
+d. `ahoy mysql-import` to import the dump you just saved
+
 ## Development
 
 * You should create your theme(s) in folders under `/themes`
