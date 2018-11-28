@@ -19,7 +19,7 @@
         git clone https://github.com/amazeeio/amazeeio-docker-windows amazeeio-docker-windows; cd amazeeio-docker-windows
         docker-compose up -d; cd ..
 
-* [Ahoy (optional)](http://ahoy-cli.readthedocs.io/en/latest/#installation) - The commands are listed in `.ahoy.yml` all include their docker-compose versions for use on Windows, or on systems without Ahoy.
+* [Ahoy (optional)](https://github.com/ahoy-cli/ahoy#installation) - The commands are listed in `.ahoy.yml` all include their docker-compose versions for use on Windows, or on systems without Ahoy.
 
 ## Project Setup
 
