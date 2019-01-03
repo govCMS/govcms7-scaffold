@@ -20,6 +20,7 @@ x-environment:
     LAGOON_ENVIRONMENT_TYPE: ${LAGOON_ENVIRONMENT_TYPE}
     LAGOON_PROJECT: *lagoon-project
     LAGOON_ROUTE: &default-url ${LOCALDEV_URL:-http://govcms7-scaffold.docker.amazee.io}
+    X_FRAME_OPTIONS: ${X_FRAME_OPTIONS:-SameOrigin}
 
 services:
 
@@ -68,6 +69,7 @@ services:
       dockerfile: .docker/Dockerfile.nginx-drupal
       args:
         CLI_IMAGE: *lagoon-project
+        X_FRAME_OPTIONS: ${X_FRAME_OPTIONS:-SameOrigin}
     labels:
       lagoon.type: nginx-php-persistent
       lagoon.persistent: /app/sites/default/files/
