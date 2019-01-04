@@ -1,3 +1,0 @@
-FROM govcmslagoon/acsf
-
-COPY themes/ /app/sites/default/themes/custom

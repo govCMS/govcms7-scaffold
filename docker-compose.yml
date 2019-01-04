@@ -36,20 +36,6 @@ services:
     environment:
       << : *default-environment
 
-  # [META:ACSF]
-  acsf:
-    build:
-      context: .
-      dockerfile: .docker/Dockerfile.cli.acsf
-    labels:
-      lagoon.type: cli-persistent
-      lagoon.persistent.name: nginx
-      lagoon.persistent: /app/sites/default/files/
-    << : *default-volumes
-    environment:
-      << : *default-environment
-  # [/META:ACSF]
-
   test:
     build:
       context: .
