@@ -20,6 +20,7 @@ x-environment:
     LAGOON_ENVIRONMENT_TYPE: ${LAGOON_ENVIRONMENT_TYPE}
     LAGOON_PROJECT: *lagoon-project
     LAGOON_ROUTE: &default-url ${LOCALDEV_URL:-http://govcms7-scaffold.docker.amazee.io}
+    X_FRAME_OPTIONS: ${X_FRAME_OPTIONS:-SameOrigin}
 
 services:
 
