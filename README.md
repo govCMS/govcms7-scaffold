@@ -76,8 +76,8 @@ Please find below the steps to enable XDEBUG on your local environment.
 The instructions are specific to PHPStorm and Chrome.
 
 ### Edit docker.compose.yml 
-* Remove this line - `DEV_MODE: ${DEV_MODE:-false}`
-* Add this line instead - `XDEBUG_ENABLE: "true"`
+* Search for this line `X_FRAME_OPTIONS: ${X_FRAME_OPTIONS:-SameOrigin}`
+* Add this line after the above - `XDEBUG_ENABLE: "true"`
 DO NOT COMMIT THIS FILE
 
 ### Copy docker folder to the host
