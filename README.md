@@ -86,7 +86,7 @@ DO NOT COMMIT THIS FILE
 
 ### Add server settings to PHPStorm
 The settings can be seen in the screenshot below:
-![alt text](/PHPStorm_server_settings.png?raw=true "PHPStrom")
+![alt text](/PHPStorm_server_settings.png?raw=true "PHPStorm")
 
 ## Image inheritance
 
