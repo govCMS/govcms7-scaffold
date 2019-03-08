@@ -75,13 +75,12 @@ The GovCMS projects have been designed to be able to import a nightly copy of th
 Please find below the steps to enable XDEBUG on your local environment. 
 The instructions are specific to PHPStorm and Chrome.
 
-### Edit docker.compose.yml 
+### Edit docker-compose.yml 
 * Search for this line `X_FRAME_OPTIONS: ${X_FRAME_OPTIONS:-SameOrigin}`
 * Add this line after the above - `XDEBUG_ENABLE: "true"`
 DO NOT COMMIT THIS FILE
 
 ### Copy docker folder to the host
-* `docker cp govcms7-scaffold_test_1:/app .`
 * `docker cp govcms7-scaffold_test_1:/app .`
 
 ### Add server settings to PHPStorm
