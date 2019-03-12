@@ -11,6 +11,7 @@ environments:
   master:
     types:
       mariadb: mariadb-shared
+      redis: none
     cronjobs:
       - name: drush cron
         schedule: "*/15 * * * *"
