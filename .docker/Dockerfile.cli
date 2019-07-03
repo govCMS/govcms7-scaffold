@@ -1,3 +1,7 @@
 FROM govcmslagoon/govcms7
 
 COPY themes/ /app/sites/default/themes/custom
+
+# Default application favicon this will be used for files and server
+# error pages all other favicon requests will be surfaced via Drupal.
+COPY favicon.ico /app
