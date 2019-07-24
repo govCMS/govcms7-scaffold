@@ -1,1 +1,4 @@
-include: 'https://projects.govcms.gov.au/govcms/govcms7-scaffold-ci/raw/master/.gitlab-ci.yml'
+include:
+  - project: 'govcms/govcms7-scaffold-ci'
+    ref: master
+    file: '.gitlab-ci.yml'
