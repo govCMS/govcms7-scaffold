@@ -1,4 +1,4 @@
 include:
   - project: 'govcms/govcms7-scaffold-ci'
-    ref: master
+    ref: feature/webhooks
     file: '.gitlab-ci.yml'
