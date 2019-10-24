@@ -1,4 +1,5 @@
-FROM govcmslagoon/govcms7
+ARG GOVCMS_IMAGE_VERSION=latest
+FROM govcmslagoon/govcms7:${GOVCMS_IMAGE_VERSION}
 
 COPY themes/ /app/sites/default/themes/custom
 
