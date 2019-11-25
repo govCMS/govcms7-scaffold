@@ -1,9 +1,11 @@
-# GovCMS Project Scaffolding
+# GovCMS7 SaaS Project Scaffolding
 
-## Known Issues
+## Notice
 
-* This repository is still a Work-in-Progress, and may be subject to slight alterations
-* This process only applies to the [7.x-3.x](https://github.com/govCMS/govcms/tree/7.x-3.x) branch of GovCMS
+Most new GovCMS projects are built on [Drupal 8 SaaS](https://github.com/govCMS/govcms8-scaffold)
+or [PaaS](https://github.com/govCMS/govcms8-scaffold-paas). The READMEs for those projects are
+now directing readers to the [GovCMS Developer Wiki](https://github.com/govCMS/govcms/wiki). This legacy README
+is kept here.
 
 ## Requirements and Preliminary Setup
 
