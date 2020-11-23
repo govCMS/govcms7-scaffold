@@ -105,14 +105,6 @@ services:
     environment:
       << : *default-environment
 
-  # Lodge a support ticket to have Redis enabled.
-  # redis:
-  #   image: govcmslagoon/redis
-  #   labels:
-  #     lagoon.type: redis
-  #   environment:
-  #     << : *default-environment
-
   # Lodge a support ticket to have Solr enabled.
   # solr:
   #   image: govcmslagoon/solr
